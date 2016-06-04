@@ -46,9 +46,7 @@ class file_handler(object):
     def __init__(self, bot):
         home = os.environ['HOME']
         config = {
-            'filename': os.path.join(
-                home, '.irc3/logs/{host}/{channel}-{date:%Y-%m-%d}.log'
-            ),
+            'filename': './logs/{host}/{channel}-{date:%Y-%m-%d}.log',
             'channels': [],
         }
         config.update(bot.config.get(__name__, {}))
