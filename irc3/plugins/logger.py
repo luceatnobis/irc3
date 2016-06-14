@@ -5,6 +5,7 @@ import irc3
 import logging
 import codecs
 from datetime import datetime
+from os.path import join
 __doc__ = '''
 ================================================
 :mod:`irc3.plugins.logger` Channel logger plugin
@@ -42,11 +43,10 @@ class file_handler(object):
         'quit': '{date:%H:%M} {mask.nick} has quit ({data})',
         'topic': '{date:%H:%M} {mask.nick} has set topic to: {data}',
     }
-
     def __init__(self, bot):
         p = bot.config['irc.plugins.logger']['folder']
         config = {
-            'filename': p + './logs/{host}/{channel}-{date:%Y-%m-%d}.log',
+            'filename': p + '/{host}/{channel}-{date:%Y-%m-%d}.log',
             'channels': [],
         }
         config.update(bot.config.get(__name__, {}))
